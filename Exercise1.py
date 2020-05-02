@@ -84,5 +84,6 @@ print('Min by {} = {}'.format(column_name, statistics_helper.min(column_name)))
 #TODO
 # Implement avg, min, max,
 
-x = [1, 2, 3, 'prdel', statistics_helper ]
+#TODO 2
+# Implement a function which, given a column name, returns a name of the person with the min / max value
 
