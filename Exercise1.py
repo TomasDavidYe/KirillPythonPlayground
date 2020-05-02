@@ -3,6 +3,7 @@ import pandas as pd
 # Create a class for calculating aggregation statistic for a list of items and test it
 
 
+
 test_set = [
     {
         'name': 'Kirill',
@@ -47,6 +48,12 @@ class StatisticsHelper:
         for item in self.data:
             print(item)
 
+    def avg(self, column_name):
+        result = self.sum(column_name)
+        result = result / len(self.data)
+        return result
+
+
 
 #Here we test the code
 print('Running the test')
@@ -56,8 +63,12 @@ statistics_helper = StatisticsHelper(test_set)
 statistics_helper.print_data()
 column_name = 'salary'
 print('Sum by {} = {}'.format(column_name, statistics_helper.sum(column_name)))
+print('Avg by {} = {}'.format(column_name, statistics_helper.avg(column_name)))
+
 
 
 #TODO
 # Implement avg, min, max,
+
+x = [1, 2, 3, 'prdel', statistics_helper ]
 
