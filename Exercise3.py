@@ -34,9 +34,9 @@ class RecentlyUsedList:
     #TODO Implement
     def get_last(self, i):
         if i > len(self.entities):
-            print('You are fucking knedlik, i should be lower than n')
+            raise Exception('You are fucking knedlik, i should be lower than {}'.format(self.length))
         else:
-            print('Id = {}, Name = {}'.format(self.entities[-i].id, self.entities[-i].name))
+            return self.entities[-i]
         pass
 
 
