@@ -24,10 +24,19 @@ class RecentlyUsedList:
 
     #TODO Implement
     def record(self, entity: Entity):
+        if len(self.entities) < self.length:
+            self.entities.append(entity)
+        else:
+            self.entities.pop(0)
+            self.entities.append(entity)
         pass
 
     #TODO Implement
     def get_last(self, i):
+        if i > len(self.entities):
+            print('You are fucking knedlik, i should be lower than n')
+        else:
+            print('Id = {}, Name = {}'.format(self.entities[-i].id, self.entities[-i].name))
         pass
 
 
@@ -40,12 +49,12 @@ c = Entity(3, 'C')
 print(a)
 
 #EXAMPLE
-list.record(a)
-list.record(b)
-list.record(c)
-list.record(b)
-list.record(a)
+# list.record(a)
+# list.record(b)
+# list.record(c)
+# list.record(b)
+# list.record(a)
 
-x = list.get_last(1) # -> x should be a
-y = list.get_last(2) # -> y should be b
-z = list.get_last(3) # -> should throw an error
+# x = list.get_last(1) # -> x should be a
+# y = list.get_last(2) # -> y should be b
+# z = list.get_last(3) # -> should throw an error
