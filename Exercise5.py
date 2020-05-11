@@ -45,10 +45,12 @@ class ChessBoard:
     def setup_king(self, x, y):
         self.king_position = [x, y]
         self.board[x][y] = ' k '
+        self.mapped_board[x][y] = ' ♔ '
 
     def setup_target(self, x, y):
         self.target_position = [x, y]
         self.board[x][y] = ' t '
+        self.mapped_board[x][y] = ' ◎ '
 
     def find_legal_moves(self, x, y):
         legal_moves = []
@@ -87,7 +89,20 @@ class ChessBoard:
                             if not (range_board[item[0]][item[1]] > 0):
                                 range_board[item[0]][item[1]] = range_board[t[0]][t[1]] + 1
     def show_path(self):
-        for i in range(self.search_shortest_path()):
+        previous_point = self.target_position
+        queue = self.find_legal_moves(self.target_position[0], self.target_position[1])
+        while (len(queue) > 0):
+            for item in queue:
+                if item == self.king_position:
+                    break
+                if self.board[item[0]][item[1]] < self.board[previous_point[0]][previous_point[1]]:
+                    previous_point.clear()
+                    previous_point = item
+                    self.mapped_board[item[0]][item[1]] = ' P '
+                    queue.clear()
+                    queue = self.find_legal_moves(item[0], item[1])
+
+
 
 
 
@@ -106,6 +121,8 @@ chess_board.setup_target(5, 5)
 print('Result:')
 chess_board.search_shortest_path()
 print(chess_board.search_shortest_path())
+chess_board.show_path()
+print(chess_board)
 
 #
 # def get_king_position(self):
